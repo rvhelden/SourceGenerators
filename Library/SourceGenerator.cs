@@ -88,17 +88,14 @@ public class SourceGenerator : IIncrementalGenerator
             var symbol = semanticModel.GetDeclaredSymbol(target);
             var content = EmbeddedResource.GetContent("Templates/Cloneable.sbncs");
             var template = Template.Parse(content);
-            
-            var attribute = symbol.GetAttributes().First(x => x.AttributeClass.Name == "EntityControllerAttribute");
-            var basePath = attribute.ConstructorArguments.First().Value?.ToString() ?? "";
-            
-            var routeFactory = template.Render(new Model
+
+            var routeFactory = template.Render(new 
             {
                 RootNamespace = symbol.ContainingNamespace.ToString(),
                 Entity = target.Identifier.ToString(),
-                BasePath = basePath
+                Properties = target.ChildNodes().OfType<PropertyDeclarationSyntax>().Select(x => x.Identifier.ToString())
             }, member => member.Name);
-            context.AddSource($"{target.Identifier}RouteFactory.g.cs", SourceText.From(routeFactory, Encoding.UTF8));
+            context.AddSource($"{target.Identifier}Cloneable.g.cs", SourceText.From(routeFactory, Encoding.UTF8));
         }
     }
 }

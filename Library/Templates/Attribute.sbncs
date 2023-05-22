@@ -19,7 +19,13 @@ public class CloneableAttribute : Attribute
 {
 }
 
-public interface ICloneable<T>
+public interface ICloneableEntity
+{
+    object Clone();
+}
+
+public interface ICloneableEntity<T> : ICloneableEntity
 {
     T Clone();
+    void CopyFrom(T other);
 }

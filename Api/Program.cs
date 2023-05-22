@@ -5,6 +5,7 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
-DemoRouteBuilder.Configure(app);
+var demo = new Demo();
+var demo2 = demo.Clone();
 
 app.Run();
