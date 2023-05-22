@@ -1,0 +1,15 @@
+﻿[
+  {
+    "name": "Developer",
+    "properties": [
+      {
+        "name": "Name",
+        "type": "string"
+      },
+      {
+        "name": "Age",
+        "type": "number"
+      }
+    ]
+  }
+]

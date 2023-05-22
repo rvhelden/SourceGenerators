@@ -1,7 +1,9 @@
 ﻿namespace Library;
 
-using System.Diagnostics;
+using Microsoft.CodeAnalysis.Text;
+using Scriban;
 using System.Reflection;
+using System.Text;
 
 public static class EmbeddedResource
 {
@@ -22,5 +24,14 @@ public static class EmbeddedResource
 
         using var reader = new StreamReader(stream);
         return reader.ReadToEnd();
+    }
+
+    public static SourceText RenderTemplate(string relativePath, object? model = null)
+    {
+        var content = EmbeddedResource.GetContent(relativePath);
+        var template = Template.Parse(content);
+        
+        var renderedContent = template.Render(model, x => x.Name);
+        return SourceText.From(renderedContent, Encoding.UTF8);
     }
 }
