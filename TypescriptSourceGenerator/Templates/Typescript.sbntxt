@@ -1,0 +1,11 @@
+export class {{Name}} {
+    {{~ for field in Fields ~}}
+    public {{field.Name | string.downcase}}: {{field.Type}};
+    {{~ end ~}}
+
+    constructor({{~ for field in Fields ~}}{{field.Name | string.downcase}}: {{field.Type}}{{if for.last}}{{else}}, {{end}} {{~ end ~}}) {
+        {{~ for field in Fields ~}}
+        this.{{field.Name | string.downcase}} = {{field.Name | string.downcase}};
+        {{~ end ~}}
+    }
+}
