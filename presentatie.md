@@ -89,3 +89,11 @@ using Person = (string FirstName, string LastName);
 
 Person person = ("John", "Doe");
 ```
+
+---
+
+# Links
+
+https://github.com/amis92/csharp-source-generators
+https://sharplab.io/
+https://github.com/rvhelden/SourceGenerators
