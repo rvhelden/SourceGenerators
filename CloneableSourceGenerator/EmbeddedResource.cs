@@ -1,4 +1,4 @@
-﻿namespace Library;
+﻿namespace CloneableSourceGenerator;
 
 using Microsoft.CodeAnalysis.Text;
 using Scriban;

@@ -2,9 +2,9 @@
 namespace {{RootNamespace}};
 
 [System.CodeDom.Compiler.GeneratedCode("Library", "1.0")]
-public partial class {{Entity}} : Library.ICloneableEntity<{{Entity}}>
+public partial class {{Entity}} : CloneableSourceGenerator.ICloneableEntity<{{Entity}}>
 {
-    object Library.ICloneableEntity.Clone() => this.Clone();
+    object CloneableSourceGenerator.ICloneableEntity.Clone() => this.Clone();
 
     public {{Entity}} Clone()
     {
@@ -15,8 +15,8 @@ public partial class {{Entity}} : Library.ICloneableEntity<{{Entity}}>
 
     public void CopyFrom({{Entity}} other)
     {
-        {{ for property in Properties -}}
+        {{~ for property in Properties ~}}
         this.{{property}} = other.{{property}};
-        {{- end }}
+        {{~ end ~}}
     }
 }

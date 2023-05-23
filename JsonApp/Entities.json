@@ -8,7 +8,16 @@
       },
       {
         "name": "Age",
-        "type": "number"
+        "type": "int"
+      }
+    ]
+  },
+  {
+    "name": "Bakker",
+    "properties": [
+      {
+        "name": "Bart",
+        "type": "string"
       }
     ]
   }
