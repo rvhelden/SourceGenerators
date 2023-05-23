@@ -1,7 +1,6 @@
 ﻿namespace JsonSourceGenerator;
 
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Text.Json;
 
 [Generator]

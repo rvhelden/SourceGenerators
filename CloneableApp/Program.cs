@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using CloneableApp;
+
+var demo = new Demo { Name = "Source", FirstName = "Yoda", LastName = "Master" };
+var clone = demo.Clone();

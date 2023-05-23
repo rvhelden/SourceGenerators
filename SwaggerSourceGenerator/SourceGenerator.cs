@@ -1,7 +1,6 @@
 ﻿namespace SwaggerSourceGenerator;
 
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Text.Json;
 
 [Generator]
@@ -66,7 +65,7 @@ public class SourceGenerator : IIncrementalGenerator
             }
         }
 
-        foreach (var @class in classes.DistinctBy(x => x.Name))
+        foreach (var @class in classes.GroupBy(x => x.Name).Select(x => x.First()))
         {
             var pocoContent = EmbeddedResource.RenderTemplate("Templates/PocoClass.sbncs", @class);
             context.AddSource($"{@class.Name}.Poco.g.cs", pocoContent);
